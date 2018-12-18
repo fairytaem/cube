@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta charset="UTF-8">
+	<title>문서 제목</title>
+	<link rel="stylesheet" href="./css/reset.css">
+	<script src="./js/jquery-3.3.1.min.js"></script>
+	<style>
+	#header_wrap{width: 100%;height: 90px;background: #f1f1f1;}
+	#header{width: 959px;height: 90px;background: #f1f1f1;margin: 0 auto;margin-top: 14px;position: relative;}
+	#menu{width: 959px;margin: 0 auto;position: relative;left: 138px;}
+	#menu>ul{width: 100%;}
+	#menu>ul:after{content: "";display: block;clear: both;}
+	#menu>ul>li{float: left;text-align: center;_width: 11.8%;padding: 0 22px;line-height: 90px;font-size: 14px;font-weight: bold;cursor: pointer}
+	#menu>ul>li:hover{background: #fff;}
+	#menu>ul>li:hover ul.sub{background: #eee;}
+
+	ul.sub{width: 100%;position: absolute;display: none;left: 0;}
+	ul.sub:after{content: "";display: block;clear: both;}
+	ul.sub>li{float: left;}
+	ul.sub>li:hover{background: #aaa;}
+	ul.sub>li>a{display: block;text-align: center;}
+
+	#sub_menu{width: 1000px;position: absolute;top: 0px;left: 700px;}
+	#sub_menu>ul
+	#sub_menu>ul:after{content: "";display: block;clear: both;}
+	#sub_menu>ul>li{float: left;text-align: center;line-height: 90px;cursor: pointer;padding-right: 4px;}
+	#sub_menu>ul>li:last-child{padding-right: 0;}
+	#sub_menu>ul>li>img{width: 47px;height: 90px;}
+	
+	#logo{position: absolute;top: 0;left: 0;}
+	#logo>img{width: 138px;height: 90px;}
+
+	#cube_global{position: absolute;top: 35px;left: 872px;cursor: pointer}
+	#cube_global>img{width: 87px;height: 18px;}
+
+	.wrap{width: 959px;margin: 0 auto;margin-top: 55px;}
+	.section{width: 959px;}
+	.banner{width: 959px;height: 477px;overflow:hidden;position: relative;}
+	.banner>ul{width: 4795px;position: relative;}
+	.banner:after{content: "";clear: both;display: block;}
+	.banner>ul>li{float: left;}
+	.banner div.pager{width: 100%;position: absolute;bottom: 20px;right:-400px;text-align: center;color: white;cursor:pointer;}
+
+	.index_wrap{width: 959px;margin: 0 auto;margin-top: 30px;}
+	.index{width: 100%;height: 30px;}
+	.index>ul:after{content: "";display: block;clear: both;}
+	.index>ul>li{float: left;padding-right: 9px;}
+	.index>ul>li:last-child{padding-right: 0;}
+
+	.mini_wrap{width: 959px;margin: 0 auto;margin-top: 55px;}
+	.mini_section{width: 959px;position: absolute;_background: pink;top: 700px;}
+	.new_release{width: 184px;height: 131px;overflow:hidden;position: relative;cursor:pointer;}
+	.new_release>ul{width: 552px;position: relative;}
+	.new_release:after{content: "";clear: both;display: block;}
+	.new_release>ul>li{float: left;}
+	.new_release div.pager_01{width: 100%;position: absolute;bottom: 10px;right: -63px;text-align: center;color: white;cursor:pointer;font-size: 6px}
+
+	.music_video{width: 184px;height: 131px;overflow:hidden;position: absolute;left: 193px;top: 0px;cursor:pointer;}
+	.music_video>ul{width: 552px;position: relative;}
+	.music_video:after{content: "";clear: both;display: block;}
+	.music_video>ul>li{float: left;}
+	.music_video div.pager_02{width: 100%;position: absolute;bottom: 10px;right: -63px;text-align: center;color: white;cursor:pointer;font-size: 6px}
+
+	.cube_cafe{width: 184px;height: 131px;overflow:hidden;position: absolute;left: 386px;top: 0px;cursor:pointer;}
+	.cube_cafe>ul{width: 552px;position: relative;}
+	.cube_cafe:after{content: "";clear: both;display: block;}
+	.cube_cafe>ul>li{float: left;}
+	.cube_cafe div.pager_03{width: 100%;position: absolute;bottom: 10px;right: -63px;text-align: center;color: white;cursor:pointer;font-size: 6px}
+
+	.new_product{width: 184px;height: 131px;overflow:hidden;position: absolute;left: 579px;top: 0px;cursor:pointer;}
+
+	.cube_tv{width: 184px;height: 131px;overflow:hidden;position: absolute;left: 772px;top: 0px;cursor:pointer;}
+
+	.index_wrap02{width: 959px;margin: 0 auto;margin-top: 170px;_background: pink;}
+	.index02{width: 100%;height: 30px;}
+	.index02>ul:after{content: "";display: block;clear: both;}
+	.index02>ul>li{float: left;padding-right: 9px;}
+	.index02>ul>li:last-child{padding-right: 0;}
+	.index02 .clicko{cursor: pointer;}
+
+	.mini_wrap2{width: 959px;margin: 0 auto;margin-top: 55px;}
+	.mini_section2{width: 959px;position: absolute;_background: pink;top: 700px;}
+	.off_shop{width: 184px;height: 38px;overflow:hidden;position: absolute;cursor:pointer;top: 190px;left: 579px}
+
+	.channel{width: 184px;height: 38px;overflow:hidden;position: absolute;cursor:pointer;top: 190px;left: 772px}
+	.channel>ul{width: 552px;position: relative;}
+	.channel:after{content: "";clear: both;display: block;}
+	.channel>ul>li{float: left;padding-right: 9px;}
+	.channel>ul>li:last-child{padding-right: 0;}
+
+	footer{margin: 0 auto;background: #f1f1f1}
+	footer>img{width: 959px;margin: 0 auto;}
+</style>
+<script>
+		$(function(){
+			var current = 0;
+			var clickInterval;
+			
+			$("#bt_next").click(function(){
+				if(current<=4){
+					current++; //current = 0 +1 ;
+					if(current==5){current=0;}
+				}
+				listMove();
+			});
+
+
+			$(".bts").click(function(){
+				current = $(this).index();
+				listMove();
+			});
+
+
+			function timer(){
+				clickInterval = setInterval(function(){
+					$("#bt_next").trigger("click");
+				},3000);
+			};
+
+
+			$(".banner").on({
+				mouseover:function(){
+					clearInterval(clickInterval);
+				},
+				mouseout:function(){
+					timer();
+				}
+			});
+
+
+			function listMove(){
+					$(".banner>ul").stop().animate({left:current*959*-1},function(){
+					$(".bts").css("color","#fff");
+					$(".bts").eq(current).css("color","pink");
+				});
+			};
+
+			// $("#bt_next2").click(function(){
+			// 	if(current<=2){
+			// 		current++; //current = 0 +1 ;
+			// 		if(current==3){current=0;}
+			// 	}
+			// 	listMove2();
+			// });
+
+
+			// $(".bts_01").click(function(){
+			// 	current = $(this).index();
+			// 	listMove2();
+			// });
+
+
+			// function timer(){
+			// 	clickInterval = setInterval(function(){
+			// 		$("#bt_next2").trigger("click");
+			// 	},3000);
+			// };
+
+
+			// $(".new_release").on({
+			// 	mouseover:function(){
+			// 		clearInterval(clickInterval);
+			// 	},
+			// 	mouseout:function(){
+			// 		timer();
+			// 	}
+			// });
+
+
+			// function listMove2(){
+			// 		$(".new_release>ul").stop().animate({left:current*184*-1},function(){
+			// 		$(".bts_01").css("color","#fff");
+			// 		$(".bts_01").eq(current).css("color","blue");
+			// 	});
+			// };
+
+		});
+
+
+		$(function(){
+			var current = 0;
+			var clickInterval;
+			
+
+			$("#bt_next2").click(function(){
+				if(current<=2){
+					current++; //current = 0 +1 ;
+					if(current==3){current=0;}
+				}
+				listMove2();
+			});
+
+
+			$(".bts_01").click(function(){
+				current = $(this).index();
+				listMove2();
+			});
+
+
+			function timer(){
+				clickInterval = setInterval(function(){
+					$("#bt_next2").trigger("click");
+				},3000);
+			};
+
+
+			$(".new_release").on({
+				mouseover:function(){
+					clearInterval(clickInterval);
+				},
+				mouseout:function(){
+					timer();
+				}
+			});
+
+
+			function listMove2(){
+					$(".new_release>ul").stop().animate({left:current*184*-1},function(){
+					$(".bts_01").css("color","#fff");
+					$(".bts_01").eq(current).css("color","blue");
+				});
+			};
+
+		});
+
+
+		$(function(){
+			var current = 0;
+			var clickInterval;
+			
+
+			$("#bt_next2").click(function(){
+				if(current<=2){
+					current++; //current = 0 +1 ;
+					if(current==3){current=0;}
+				}
+				listMove2();
+			});
+
+
+			$(".bts_02").click(function(){
+				current = $(this).index();
+				listMove2();
+			});
+
+
+			function timer(){
+				clickInterval = setInterval(function(){
+					$("#bt_next2").trigger("click");
+				},3000);
+			};
+
+
+			$(".music_video").on({
+				mouseover:function(){
+					clearInterval(clickInterval);
+				},
+				mouseout:function(){
+					timer();
+				}
+			});
+
+
+			function listMove2(){
+					$(".music_video>ul").stop().animate({left:current*184*-1},function(){
+					$(".bts_02").css("color","#fff");
+					$(".bts_02").eq(current).css("color","blue");
+				});
+			};
+
+		});
+
+		$(function(){
+			var current = 0;
+			var clickInterval;
+			
+
+			$("#bt_next2").click(function(){
+				if(current<=2){
+					current++; //current = 0 +1 ;
+					if(current==3){current=0;}
+				}
+				listMove2();
+			});
+
+
+			$(".bts_03").click(function(){
+				current = $(this).index();
+				listMove2();
+			});
+
+
+			function timer(){
+				clickInterval = setInterval(function(){
+					$("#bt_next2").trigger("click");
+				},3000);
+			};
+
+
+			$(".cube_cafe").on({
+				mouseover:function(){
+					clearInterval(clickInterval);
+				},
+				mouseout:function(){
+					timer();
+				}
+			});
+
+
+			function listMove2(){
+					$(".cube_cafe>ul").stop().animate({left:current*184*-1},function(){
+					$(".bts_03").css("color","#fff");
+					$(".bts_03").eq(current).css("color","blue");
+				});
+			};
+
+		});
+	</script>
+</head>
+
+<body>
+	<div id="header_wrap">
+		<div id="header">
+			<div id="logo">
+				<img src="./images/topmenu_01.png" alt="">
+			</div>
+			<nav id="menu">
+				<ul>
+					<li>COMPANY
+						<ul class="sub">
+							<li><a href="#">COMPANY INFO</a></li>
+							<li><a href="#">GREETINGS</a></li>
+							<li><a href="#">HISTORY</a></li>
+							<li><a href="#">ORGANIZATION</a></li>
+							<li><a href="#">BUSINESS AREA</a></li>
+							<li><a href="#">20SPACE</a></li>
+							<li><a href="#">LOCATION</a></li>
+							<li><a href="#">Investor Relations</a></li>
+						</ul>
+					</li>
+					<li>ARTIST
+						<ul class="sub">
+							<li><a href="#">JO KWON</a></li>
+							<li><a href="#">JANG HYUN SEUNG</a></li>
+							<li><a href="#">TROUBLE MAKER</a></li>
+							<li><a href="#">BTOB</a></li>
+							<li><a href="#">CLC</a></li>
+							<li><a href="#">PENTAGON</a></li>
+							<li><a href="#">TRIPPLE H</a></li>
+							<li><a href="#">(G)I-DLE</a></li>
+							<li><a href="#">LAI KUAN LIN</a></li>
+							<li><a href="#">YOO SEONHO</a></li>
+							<li><a href="#">LEE HWEE JAE</a></li>
+							<li><a href="#">HEO KYEONG HWAN</a></li>
+							<li><a href="#">NA JONGCHAN</a></li>
+						</ul>
+					</li>
+					<li>MULTIMEDIA
+						<ul class="sub">
+							<li><a href="#">MUSIC VIDEO</a></li>
+							<li><a href="#">DOWNLOAD</a></li>
+						</ul>
+					</li>
+					<li>AUDITION
+						<ul class="sub"></ul>
+					</li>
+					<li>NOTICE
+						<ul class="sub">
+							<li><a href="#">NOTICE</a></li>
+							<li><a href="#">FROM CUBE</a></li>
+							<li><a href="#">TO CUBE</a></li>
+						</ul>
+					</li>
+				</ul>
+			</nav>
+			<nav id="sub_menu">
+				<ul>
+					<li><img src="./images/topmenu_07.png" alt=""></li>
+					<li><img src="./images/topmenu_08.png" alt=""></li>
+					<li><img src="./images/topmenu_09.png" alt=""></li>
+				</ul>
+			</nav>
+			<div id="cube_global">
+				<img src="./images/cubeglobal.png" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="btn">
+		<span id="bt_next"> </span>
+	</div>
+	<div class="wrap">
+		<div class="section">
+			<div class="banner">
+				<ul>
+					<li><img src="./images/banner_01.jpg" alt=""></li>
+					<li><img src="./images/banner_02.jpg" alt=""></li>
+					<li><img src="./images/banner_03.jpg" alt=""></li>
+					<li><img src="./images/banner_04.jpg" alt=""></li>
+					<li><img src="./images/banner_05.jpg" alt=""></li>
+				</ul>
+				
+				<div class="pager">
+					<span class="bts" style="color:pink">●</span>
+					<span class="bts">●</span>
+					<span class="bts">●</span>
+					<span class="bts">●</span>
+					<span class="bts">●</span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="index_wrap">
+		<div class="index">
+			<ul>
+				<li><img src="./images/index01.png" alt=""></li>
+				<li><img src="./images/index02.png" alt=""></li>
+				<li><img src="./images/index03.png" alt=""></li>
+				<li><img src="./images/index04.png" alt=""></li>
+				<li><img src="./images/index05.png" alt=""></li>
+			</ul>
+		</div>
+	</div>
+	<div class="btn2">
+		<span id="bt_next2"> </span>
+	</div>
+	<div class="mini_wrap">
+		<div class="mini_section">
+			<div class="new_release">
+				<ul>
+					<li><img src="./images/album_01.png" alt=""></li>
+					<li><img src="./images/album_02.png" alt=""></li>
+					<li><img src="./images/album_03.png" alt=""></li>
+				</ul>
+				<div class="pager_01">
+					<span class="bts_01" style="color:blue">●</span>
+					<span class="bts_01">●</span>
+					<span class="bts_01">●</span>
+				</div>
+			</div>
+			<div class="music_video">
+				<ul>
+					<li><img src="./images/mv_01.png" alt=""></li>
+					<li><img src="./images/mv_02.png" alt=""></li>
+					<li><img src="./images/mv_03.png" alt=""></li>
+				</ul>
+				<div class="pager_02">
+					<span class="bts_02" style="color:blue">●</span>
+					<span class="bts_02">●</span>
+					<span class="bts_02">●</span>
+				</div>
+			</div>
+			<div class="cube_cafe">
+				<ul>
+					<li><img src="./images/promotion_01.png" alt=""></li>
+					<li><img src="./images/promotion_02.png" alt=""></li>
+					<li><img src="./images/promotion_03.png" alt=""></li>
+				</ul>
+				<div class="pager_03">
+					<span class="bts_03" style="color:blue">●</span>
+					<span class="bts_03">●</span>
+					<span class="bts_03">●</span>
+				</div>
+			</div>
+			<div class="new_product">
+				<img src="./images/new_product.png" alt="">
+			</div>
+			<div class="cube_tv">
+				<img src="./images/cube_tv.png" alt="">
+			</div>
+		</div>
+	</div>
+	<div class="index_wrap02">
+		<div class="index02">
+			<ul>
+				<li><img src="./images/index06.png" alt="" class="clicko"></li>
+				<li><img src="./images/indexnone.png" alt=""></li>
+				<li><img src="./images/indexnone.png" alt=""></li>
+				<li><img src="./images/index07.png" alt=""></li>
+				<li><img src="./images/index08.png" alt=""></li>
+			</ul>
+		</div>
+	</div>
+	<div class="mini_wrap2">
+		<div class="mini_section2">
+			<div class="off_shop">
+				<img src="./images/off_shop.png" alt="">
+			</div>
+			<div class="channel">
+				<ul>
+					<li><img src="./images/channel_01.png" alt=""></li>
+					<li><img src="./images/channel_02.png" alt=""></li>
+					<li><img src="./images/channel_03.png" alt=""></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<img src="./images/bottomt.png" alt="">
+	</footer>
+</body>
+</html>
